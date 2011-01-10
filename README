@@ -1,0 +1,2 @@
+rails new [PROJECT-NAME] -J -T --edge -d postgresql -m ../railstemplates/default.rb 
+
