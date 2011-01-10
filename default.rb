@@ -98,7 +98,7 @@ file 'config/local.sample.rb', localrb_template = <<-RUBY.gsub(/^ {2}/, '')
   }
 RUBY
 file 'config/local.rb', localrb_template
-gsub_file 'config/local.rb', '# `rake secret`', ActiveSupport::SecureRandom.hex(64)
+gsub_file 'config/local.rb', '# `rake secret`', "'#{ActiveSupport::SecureRandom.hex(64)}'"
 gsub_file 'config/initializers/secret_token.rb', /'.+'/, 'AppConfig[:cookie_token]'
 
 file 'config/assets.yml', <<-CODE.gsub(/^ {2}/, '')
