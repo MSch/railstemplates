@@ -101,6 +101,18 @@ file 'config/local.rb', localrb_template
 gsub_file 'config/local.rb', '# `rake secret`', "'#{ActiveSupport::SecureRandom.hex(64)}'"
 gsub_file 'config/initializers/secret_token.rb', /'.+'/, 'AppConfig[:cookie_token]'
 
+file 'config/initializers/escape_utils.rb', <<-CODE.gsub(/^ {2}/, '')
+  require "escape_utils/html/cgi"
+  require "escape_utils/html/erb"
+  require "escape_utils/html/html"
+  require "escape_utils/html/rack"
+  require "escape_utils/javascript/action_view"
+  require "escape_utils/url/cgi"
+  require "escape_utils/url/erb"
+  require "escape_utils/url/rack"
+  require "escape_utils/url/uri"
+CODE
+
 file 'config/assets.yml', <<-CODE.gsub(/^ {2}/, '')
   embed_assets: off
 
